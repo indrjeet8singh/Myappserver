@@ -1,6 +1,6 @@
 const express = require("express");
 const myapp = express.Router();
-const bcrypt = require("bcrypt");
+const bcrypt = require('bcryptjs');
 const mydatatype = require("../schimatype/schimatype");
 const shopdatatype = require("../schimatype/Shoppingschema");
 const feedbackDatatype = require("../schimatype/Userfeedbackschema");
@@ -334,10 +334,17 @@ myapp.get("/validuser",authenticate,async(req,res)=>{
 
 
 // --------------------------------------current user logout-----------
-// myapp.post('/logout', (req, res) => {
-//   res.clearCookie('usecookie'); // Match the cookie name used for storing the token
-//   return res.status(200).json({ message: "Logged out successfully" });
-// });
+myapp.get('/logout', authenticate, (req, res) => {
+  try {
+   
+    res.clearCookie('jwt'); // Match the cookie name used for storing the token
+    console.log('logout successfully');
+    return res.status(200).json({ message: "Logged out successfully" });
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
+
 // -------------------------------get user info--------------------
 myapp.get('/userinfo', authenticate, async (req, res) => {
   try {
