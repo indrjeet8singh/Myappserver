@@ -1,3 +1,4 @@
+'Access-Control-Allow-Origin'
 const express = require("express");
 const myapp = express.Router();
 const bcrypt = require('bcryptjs');
