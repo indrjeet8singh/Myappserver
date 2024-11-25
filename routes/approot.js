@@ -2,6 +2,7 @@ const express = require("express");
 const myapp = express.Router();
 const bcrypt = require("bcrypt");
 const session = require('express-session');
+const bcrypt = require('bcryptjs');
 
 const mydatatype = require("../schimatype/schimatype");
 const shopdatatype = require("../schimatype/Shoppingschema");
