@@ -393,7 +393,7 @@ myapp.post("/mylogin", async(req,res)=>{
           if(!mathdata){
               res.status(422).json({error:"password not match"});
           }else{
-              // Here token generate after successful find data
+              //token generate after successful find data
                   const token = await uservalidation.customgeenratefunction();
               // cookies generate
                   res.cookie("usecookie",token,{
@@ -437,8 +437,8 @@ myapp.get('/current-user', (req, res) => {
 
 // Logout Route
 myapp.post('/logout', (req, res) => {
-  req.session.destroy(); 
-  res.clearCookie("usecookie"); 
+  req.session.destroy(); // For session-based logout
+  res.clearCookie("usecookie"); // For JWT-based logout
   res.json({ message: 'Logged out successfully' });
 });
 // -------------------
